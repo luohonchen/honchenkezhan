@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.SectionsDAO">
+	<resultMap type="sections" id="sectionsMap">
+		<id property="sectionsid" column="sectionsid" />
+		<result property="booksid" column="booksid" />
+		<result property="title" column="title" />
+		<result property="contents" column="contents" />
+		<result property="addtime" column="addtime" />
+		<result property="hits" column="hits" />
+		<result property="cate" column="cate" />
+		<result property="thepre" column="thepre" />
+		<result property="thenxt" column="thenxt" />
+		<result property="booksname" column="booksname" />
+	</resultMap>
+	<!-- 插入语句 DAO通过id调用此配置 -->
+	<insert id="insertSections" parameterType="sections">
+		insert into sections(sectionsid , booksid , title , contents , addtime ,
+		hits , cate , thepre , thenxt ) values(#{sectionsid} , #{booksid} ,
+		#{title} , #{contents} , #{addtime} , #{hits} , #{cate} , #{thepre} ,
+		#{thenxt} )
+	</insert>
+	<!-- 更新语句 DAO通过id调用此配置 -->
+	<update id="updateSections" parameterType="sections">
+		update sections set booksid=#{booksid} , title=#{title} ,
+		contents=#{contents} , addtime=#{addtime} , hits=#{hits} ,
+		cate=#{cate} , thepre=#{thepre} , thenxt=#{thenxt} where
+		sectionsid=#{sectionsid}
+	</update>
+	<!-- 按主键删除 DAO通过id调用此配置 -->
+	<delete id="deleteSections" parameterType="String">
+		delete from sections where sectionsid = #{sectionsid}
+	</delete>
+	<!-- 查询全部信息 DAO通过id调用此配置 -->
+	<select id="getAllSections" resultMap="sectionsMap">
+		select a.* , b.booksname from sections a , books b where 1=1 and a.booksid =
+		b.booksid order by sectionsid desc
+	</select>
+	<!-- 按主键查询 DAO通过id调用此配置 -->
+	<select id="getSectionsById" parameterType="String" resultMap="sectionsMap">
+		select a.* , b.booksname from sections a , books b where 1=1 and
+		a.booksid = b.booksid and sectionsid=#{sectionsid} order by sectionsid
+		desc
+	</select>
+	<!-- 按条件精确查询 DAO通过id调用此配置 -->
+	<select id="getSectionsByCond" parameterType="sections"
+		resultMap="sectionsMap">
+		select a.* , b.booksname from sections a , books b where 1=1 and
+		a.booksid = b.booksid
+		<if test="booksid != null and '' != booksid">
+			and a.booksid = #{booksid}
+		</if>
+		<if test="title != null and '' != title">
+			and a.title = #{title}
+		</if>
+		<if test="contents != null and '' != contents">
+			and a.contents = #{contents}
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime = #{addtime}
+		</if>
+		<if test="hits != null and '' != hits">
+			and a.hits = #{hits}
+		</if>
+		<if test="cate != null and '' != cate">
+			and a.cate = #{cate}
+		</if>
+		<if test="thepre != null and '' != thepre">
+			and a.thepre = #{thepre}
+		</if>
+		<if test="thenxt != null and '' != thenxt">
+			and a.thenxt = #{thenxt}
+		</if>
+	</select>
+	<!-- 按条件模糊查询 DAO通过id调用此配置 -->
+	<select id="getSectionsByLike" parameterType="sections"
+		resultMap="sectionsMap">
+		select a.* , b.booksname from sections a , books b where 1=1 and
+		a.booksid = b.booksid
+		<if test="booksid != null and '' != booksid">
+			and a.booksid like CONCAT('%', CONCAT(#{booksid}, '%'))
+		</if>
+		<if test="title != null and '' != title">
+			and a.title like CONCAT('%', CONCAT(#{title}, '%'))
+		</if>
+		<if test="contents != null and '' != contents">
+			and a.contents like CONCAT('%', CONCAT(#{contents}, '%'))
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime like CONCAT('%', CONCAT(#{addtime}, '%'))
+		</if>
+		<if test="hits != null and '' != hits">
+			and a.hits like CONCAT('%', CONCAT(#{hits}, '%'))
+		</if>
+		<if test="cate != null and '' != cate">
+			and a.cate like CONCAT('%', CONCAT(#{cate}, '%'))
+		</if>
+		<if test="thepre != null and '' != thepre">
+			and a.thepre like CONCAT('%', CONCAT(#{thepre}, '%'))
+		</if>
+		<if test="thenxt != null and '' != thenxt">
+			and a.thenxt like CONCAT('%', CONCAT(#{thenxt}, '%'))
+		</if>
+	</select>
+</mapper>
+
+

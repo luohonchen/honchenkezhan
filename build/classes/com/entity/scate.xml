@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.ScateDAO">
+	<resultMap type="scate" id="scateMap">
+		<id property="scateid" column="scateid" />
+		<result property="scatename" column="scatename" />
+		<result property="bcateid" column="bcateid" />
+		<result property="memo" column="memo" />
+		<result property="bcatename" column="bcatename" />
+	</resultMap>
+	<!-- 插入语句 DAO通过id调用此配置 -->
+	<insert id="insertScate" parameterType="scate">
+		insert into scate(scateid , scatename , bcateid , memo ) values(#{scateid} ,
+		#{scatename} , #{bcateid} , #{memo} )
+	</insert>
+	<!-- 更新语句 DAO通过id调用此配置 -->
+	<update id="updateScate" parameterType="scate">
+		update scate set scatename=#{scatename} , bcateid=#{bcateid} , memo=#{memo}
+		where scateid=#{scateid}
+	</update>
+	<!-- 按主键删除 DAO通过id调用此配置 -->
+	<delete id="deleteScate" parameterType="String">
+		delete from scate where scateid = #{scateid}
+	</delete>
+	<!-- 查询全部信息 DAO通过id调用此配置 -->
+	<select id="getAllScate" resultMap="scateMap">
+		select a.* , b.bcatename from scate a , bcate b where 1=1 and a.bcateid =
+		b.bcateid order by scateid desc
+	</select>
+	<!-- 按主键查询 DAO通过id调用此配置 -->
+	<select id="getScateById" parameterType="String" resultMap="scateMap">
+		select a.* , b.bcatename from scate a , bcate b where 1=1 and
+		a.bcateid = b.bcateid and scateid=#{scateid} order by scateid desc
+	</select>
+	<!-- 按条件精确查询 DAO通过id调用此配置 -->
+	<select id="getScateByCond" parameterType="scate" resultMap="scateMap">
+		select a.* , b.bcatename from scate a , bcate b where 1=1 and
+		a.bcateid = b.bcateid
+		<if test="scatename != null and '' != scatename">
+			and a.scatename = #{scatename}
+		</if>
+		<if test="bcateid != null and '' != bcateid">
+			and a.bcateid = #{bcateid}
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo = #{memo}
+		</if>
+	</select>
+	<!-- 按条件模糊查询 DAO通过id调用此配置 -->
+	<select id="getScateByLike" parameterType="scate" resultMap="scateMap">
+		select a.* , b.bcatename from scate a , bcate b where 1=1 and
+		a.bcateid = b.bcateid
+		<if test="scatename != null and '' != scatename">
+			and a.scatename like CONCAT('%', CONCAT(#{scatename}, '%'))
+		</if>
+		<if test="bcateid != null and '' != bcateid">
+			and a.bcateid like CONCAT('%', CONCAT(#{bcateid}, '%'))
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo like CONCAT('%', CONCAT(#{memo}, '%'))
+		</if>
+	</select>
+</mapper>
+
+

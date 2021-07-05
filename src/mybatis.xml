@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="admin" type="com.entity.Admin" />
+		<typeAlias alias="users" type="com.entity.Users" />
+		<typeAlias alias="article" type="com.entity.Article" />
+		<typeAlias alias="bcate" type="com.entity.Bcate" />
+		<typeAlias alias="scate" type="com.entity.Scate" />
+		<typeAlias alias="books" type="com.entity.Books" />
+		<typeAlias alias="sections" type="com.entity.Sections" />
+		<typeAlias alias="fav" type="com.entity.Fav" />
+		<typeAlias alias="charge" type="com.entity.Charge" />
+		<typeAlias alias="pays" type="com.entity.Pays" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/entity/admin.xml" />
+		<mapper resource="com/entity/users.xml" />
+		<mapper resource="com/entity/article.xml" />
+		<mapper resource="com/entity/bcate.xml" />
+		<mapper resource="com/entity/scate.xml" />
+		<mapper resource="com/entity/books.xml" />
+		<mapper resource="com/entity/sections.xml" />
+		<mapper resource="com/entity/fav.xml" />
+		<mapper resource="com/entity/charge.xml" />
+		<mapper resource="com/entity/pays.xml" />
+	</mappers>
+</configuration>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.ChargeDAO">
+	<resultMap type="charge" id="chargeMap">
+		<id property="chargeid" column="chargeid" />
+		<result property="usersid" column="usersid" />
+		<result property="money" column="money" />
+		<result property="addtime" column="addtime" />
+		<result property="username" column="username" />
+	</resultMap>
+	<!-- 插入语句 DAO通过id调用此配置 -->
+	<insert id="insertCharge" parameterType="charge">
+		insert into charge(chargeid , usersid , money , addtime ) values(#{chargeid}
+		, #{usersid} , #{money} , #{addtime} )
+	</insert>
+	<!-- 更新语句 DAO通过id调用此配置 -->
+	<update id="updateCharge" parameterType="charge">
+		update charge set usersid=#{usersid} , money=#{money} , addtime=#{addtime}
+		where chargeid=#{chargeid}
+	</update>
+	<!-- 按主键删除 DAO通过id调用此配置 -->
+	<delete id="deleteCharge" parameterType="String">
+		delete from charge where chargeid = #{chargeid}
+	</delete>
+	<!-- 查询全部信息 DAO通过id调用此配置 -->
+	<select id="getAllCharge" resultMap="chargeMap">
+		select a.* , b.username from charge a , users b where 1=1 and a.usersid =
+		b.usersid order by chargeid desc
+	</select>
+	<!-- 按主键查询 DAO通过id调用此配置 -->
+	<select id="getChargeById" parameterType="String" resultMap="chargeMap">
+		select a.* , b.username from charge a , users b where 1=1 and
+		a.usersid = b.usersid and chargeid=#{chargeid} order by chargeid desc
+	</select>
+	<!-- 按条件精确查询 DAO通过id调用此配置 -->
+	<select id="getChargeByCond" parameterType="charge" resultMap="chargeMap">
+		select a.* , b.username from charge a , users b where 1=1 and
+		a.usersid = b.usersid
+		<if test="usersid != null and '' != usersid">
+			and a.usersid = #{usersid}
+		</if>
+		<if test="money != null and '' != money">
+			and a.money = #{money}
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime = #{addtime}
+		</if>
+	</select>
+	<!-- 按条件模糊查询 DAO通过id调用此配置 -->
+	<select id="getChargeByLike" parameterType="charge" resultMap="chargeMap">
+		select a.* , b.username from charge a , users b where 1=1 and
+		a.usersid = b.usersid
+		<if test="usersid != null and '' != usersid">
+			and a.usersid like CONCAT('%', CONCAT(#{usersid}, '%'))
+		</if>
+		<if test="money != null and '' != money">
+			and a.money like CONCAT('%', CONCAT(#{money}, '%'))
+		</if>
+		<if test="addtime != null and '' != addtime">
+			and a.addtime like CONCAT('%', CONCAT(#{addtime}, '%'))
+		</if>
+	</select>
+</mapper>
+
+

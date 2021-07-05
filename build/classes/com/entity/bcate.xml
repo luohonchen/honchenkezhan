@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 配置Mabatis映射文件 -->
+<mapper namespace="com.dao.BcateDAO">
+	<resultMap type="bcate" id="bcateMap">
+		<id property="bcateid" column="bcateid" />
+		<result property="bcatename" column="bcatename" />
+		<result property="memo" column="memo" />
+	</resultMap>
+	<!-- 插入语句 DAO通过id调用此配置 -->
+	<insert id="insertBcate" parameterType="bcate">
+		insert into bcate(bcateid
+		, bcatename , memo ) values(#{bcateid} ,
+		#{bcatename} , #{memo} )
+	</insert>
+	<!-- 更新语句 DAO通过id调用此配置 -->
+	<update id="updateBcate" parameterType="bcate">
+		update bcate set
+		bcatename=#{bcatename} , memo=#{memo} where
+		bcateid=#{bcateid}
+	</update>
+	<!-- 按主键删除 DAO通过id调用此配置 -->
+	<delete id="deleteBcate" parameterType="String">
+		delete from bcate where
+		bcateid = #{bcateid}
+	</delete>
+	<!-- 查询全部信息 DAO通过id调用此配置 -->
+	<select id="getAllBcate" resultMap="bcateMap">
+		select a.* from bcate a where
+		1=1 order by bcateid desc
+	</select>
+	<select id="getFrontBcate" resultMap="bcateMap">
+		select a.* from bcate a
+		order by bcateid desc limit 3
+	</select>
+	<!-- 按主键查询 DAO通过id调用此配置 -->
+	<select id="getBcateById" parameterType="String" resultMap="bcateMap">
+		select a.* from bcate a where 1=1 and bcateid=#{bcateid} order by
+		bcateid desc
+	</select>
+	<!-- 按条件精确查询 DAO通过id调用此配置 -->
+	<select id="getBcateByCond" parameterType="bcate" resultMap="bcateMap">
+		select a.* from bcate a where 1=1
+		<if test="bcatename != null and '' != bcatename">
+			and a.bcatename = #{bcatename}
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo = #{memo}
+		</if>
+	</select>
+	<!-- 按条件模糊查询 DAO通过id调用此配置 -->
+	<select id="getBcateByLike" parameterType="bcate" resultMap="bcateMap">
+		select a.* from bcate a where 1=1
+		<if test="bcatename != null and '' != bcatename">
+			and a.bcatename like CONCAT('%', CONCAT(#{bcatename},
+			'%'))
+		</if>
+		<if test="memo != null and '' != memo">
+			and a.memo like CONCAT('%', CONCAT(#{memo}, '%'))
+		</if>
+	</select>
+</mapper>
+
+
