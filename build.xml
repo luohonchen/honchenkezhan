@@ -2,7 +2,7 @@
 <project name="ecp" default="deploy" basedir=".">
 	<!-- 
 		Must set these args in jenkins!!!
-		TOMCAT_HOME=/usr/local/apache/apache-tomcat-8.0.35
+		TOMCAT_HOME=/usr/local/tomcat9/
 	 -->
 	
 	<property name="webapp.name" value="ROOT" />
