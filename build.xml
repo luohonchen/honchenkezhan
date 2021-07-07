@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="ecp" default="deploy" basedir="/usr/local/tomcat9">
+<project name="ecp" default="deploy" basedir=".">
 	<!-- 
 		Must set these args in jenkins!!!
-		TOMCAT_HOME=/usr/local/tomcat9
+		TOMCAT_HOME=/usr/local/apache/apache-tomcat-8.0.35
 	 -->
 	
 	<property name="webapp.name" value="ROOT" />
@@ -14,20 +14,20 @@
 	<property name="lib.dir" value="${webRoot.dir}/WEB-INF/lib" />
 	<property name="build.dir" value="${basedir}/build" />
 	
-	<!-- Ê¹ÓÃeclipse jdt½øÐÐ±àÒë£¬¶ø²»Ê¹ÓÃJDK±àÒë 
+	<!-- ä½¿ç”¨eclipse jdtè¿›è¡Œç¼–è¯‘ï¼Œè€Œä¸ä½¿ç”¨JDKç¼–è¯‘ 
 	<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" /> 
 	 -->
  
-	<!-- ³õÊ¼»¯classpath -->
+	<!-- åˆå§‹åŒ–classpath -->
 	<path id="project.classpath">
 		<fileset dir="${lib.dir}">
 			<include name="**/*.jar" />
 		</fileset>
-		<!-- Ìí¼ÓtomcatÀàÂ·¾¶ -->
+		<!-- æ·»åŠ tomcatç±»è·¯å¾„ -->
 		<fileset dir="${TOMCAT_HOME}/lib">
 			<include name="*.jar" />
 		</fileset>
-		<!-- ant lib°ü  -->
+		<!-- ant libåŒ…  -->
 		<fileset dir="${ant.dir}">
 			<include name="**/*.jar" />
 		</fileset>
@@ -56,15 +56,15 @@
    		<available file="${TOMCAT_HOME}/webapps/${webapp.name}.war"  property="found.war"/>
 	</target>
 	
-	<!-- ±¸·ÝÉÏ´Îwar°ü -->
-	<target name="backup" depends="checks" description="±¸·Ý¾ÉÎÄ¼þ" if="found.war">
+	<!-- å¤‡ä»½ä¸Šæ¬¡waråŒ… -->
+	<target name="backup" depends="checks" description="å¤‡ä»½æ—§æ–‡ä»¶" if="found.war">
 		<echo message="begin backup..." />
 		<move file="${TOMCAT_HOME}/webapps/${webapp.name}.war" 
 			tofile="${TOMCAT_HOME}/webapps/${webapp.name}.war.${my.dt}"></move>
 	</target>
 	
-	<!-- É¾³ýÖ®Ç°µÄÄ¿Â¼½á¹¹ -->
-	<target name="clear" depends="backup" description="ÇåÀí¾ÉÎÄ¼þ">
+	<!-- åˆ é™¤ä¹‹å‰çš„ç›®å½•ç»“æž„ -->
+	<target name="clear" depends="backup" description="æ¸…ç†æ—§æ–‡ä»¶">
 		<echo message="begin clear..." />
 		<delete dir="${build.dir}" />
 		<delete dir="${dist.dir}" />
@@ -73,15 +73,15 @@
 		<delete dir="${TOMCAT_HOME}/work/Catalina/localhost/" />
 	</target>
  
-	<!-- ´´½¨Ä¿Â¼½á¹¹ -->
-	<target name="init" depends="clear" description="´´½¨³õÊ¼»¯Ä¿Â¼½á¹¹">
+	<!-- åˆ›å»ºç›®å½•ç»“æž„ -->
+	<target name="init" depends="clear" description="åˆ›å»ºåˆå§‹åŒ–ç›®å½•ç»“æž„">
 		<echo message="begin init..." />
 		<mkdir dir="${build.dir}/classes" />
 		<mkdir dir="${dist.dir}" />
 	</target>
  
-	<!-- ±àÒëjava -->
-	<target name="compile" depends="init" description="±àÒëjavaÎÄ¼þ">
+	<!-- ç¼–è¯‘java -->
+	<target name="compile" depends="init" description="ç¼–è¯‘javaæ–‡ä»¶">
 		<echo message="begin compile..." />
 		<javac destdir="${build.dir}/classes" includeantruntime="false" nowarn="on" 
 			source="1.7" target="1.7" deprecation="true" debug="true" 
@@ -112,7 +112,7 @@
 		<echo message="end compile..." />
 	</target>
  
-	<!-- ½«classÎÄ¼þ´ò³É jar°ü -->
+	<!-- å°†classæ–‡ä»¶æ‰“æˆ jaråŒ… -->
 	<!--  
 	    <target name="pack" depends="compile"> 
 	        <jar jarfile="${build.dir}/${webapp.name}.jar"> 
@@ -123,8 +123,8 @@
 	    </target> 
 	-->
  
-	<!-- ´ò³Éwar°ü, Ãû³ÆÄ¬ÈÏÎª ÏîÄ¿Ãû -->
-	<target name="war" depends="compile" description="½«¹¤³Ì´ò³Éwar°ü">
+	<!-- æ‰“æˆwaråŒ…, åç§°é»˜è®¤ä¸º é¡¹ç›®å -->
+	<target name="war" depends="compile" description="å°†å·¥ç¨‹æ‰“æˆwaråŒ…">
 		<echo message="begin war...${webRoot.dir}..." />
 		<war destfile="${dist.dir}/${webapp.name}.war" basedir="${webRoot.dir}" webxml="${webRoot.dir}/WEB-INF/web.xml">
 			<lib dir="${lib.dir}" />
@@ -136,8 +136,8 @@
 		<echo message="end war..." />
 	</target>
  
-	<!-- copy war°ü tomcatµÄdeployÄ¿Â¼ -->
-	<target name="deploy" depends="war" description="²¿ÊðÏîÄ¿">
+	<!-- copy waråŒ… tomcatçš„deployç›®å½• -->
+	<target name="deploy" depends="war" description="éƒ¨ç½²é¡¹ç›®">
 		<echo message="begin deploy..." />
 		<copy file="${dist.dir}/${webapp.name}.war" todir="${TOMCAT_HOME}/webapps" />
 		<echo message="end deploy..." />
