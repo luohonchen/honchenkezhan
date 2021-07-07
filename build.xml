@@ -1,111 +1,146 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ssm_jydsjdxsydwz">
-    <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="D:/eclipse/eclipse/"/>
-    <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.8"/>
-    <property name="source" value="1.8"/>
-    <path id="Web App Libraries.libraryclasspath">
-        <pathelement location="WebContent/WEB-INF/lib/classes12.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/com.springsource.org.aopalliance-1.0.0.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/com.springsource.org.aspectj.weaver-1.6.8.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-collections-3.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-dbcp-1.4.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-io-1.3.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-lang3-3.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-logging-1.1.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-pool-1.6.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-uti-1.0.0.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/commons-util-1.0.0.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/fastjson-1.2.35.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jackson-annotations-2.8.0.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jackson-core-2.8.5.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jackson-core-asl-1.9.13.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jackson-databind-2.8.5.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jackson-mapper-asl-1.9.13.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jcommon-1.0.12.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jfreechart-1.0.9.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jstl.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jtds1.2.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/jxl.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/log4j-1.2.16.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mybatis-3.1.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mybatis-spring-1.1.1.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/mysql-connector-java-5.1.47.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/org.json.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/servlet-api.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-aop-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-aspects-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-beans-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-context-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-context-support-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-context-support.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-core-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-expression-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-instrument-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-instrument-tomcat-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-jdbc-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-jms-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-messaging-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-orm-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-oxm-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-test-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-tx-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-web-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-webmvc-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-webmvc-portlet-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/spring-websocket-4.3.0.RELEASE.jar"/>
-        <pathelement location="WebContent/WEB-INF/lib/standard.jar"/>
-    </path>
-    <path id="EAR Libraries.libraryclasspath"/>
-    <path id="ssm_jydsjdxsydwz.classpath">
-        <pathelement location="build/classes"/>
-        <path refid="Web App Libraries.libraryclasspath"/>
-        <path refid="EAR Libraries.libraryclasspath"/>
-    </path>
-    <target name="init">
-        <mkdir dir="build/classes"/>
-        <copy includeemptydirs="false" todir="build/classes">
-            <fileset dir="src">
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
-    </target>
-    <target name="clean">
-        <delete dir="build/classes"/>
-    </target>
-    <target depends="clean" name="cleanall"/>
-    <target depends="build-subprojects,build-project" name="build"/>
-    <target name="build-subprojects"/>
-    <target depends="init" name="build-project">
-        <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
-            <src path="src"/>
-            <classpath refid="ssm_jydsjdxsydwz.classpath"/>
-        </javac>
-    </target>
-    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
-    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
-        <copy todir="${ant.library.dir}">
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </copy>
-        <unzip dest="${ant.library.dir}">
-            <patternset includes="jdtCompilerAdapter.jar"/>
-            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
-        </unzip>
-    </target>
-    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
-        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
-        <antcall target="build"/>
-    </target>
-    <target name="Tomcat.1 (1)">
-        <java classname="org.apache.catalina.startup.Tomcat$1" failonerror="true" fork="yes">
-            <classpath refid="ssm_jydsjdxsydwz.classpath"/>
-        </java>
-    </target>
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ecp" default="deploy" basedir="/usr/local/tomcat9">
+	<!-- 
+		Must set these args in jenkins!!!
+		TOMCAT_HOME=/usr/local/tomcat9
+	 -->
+	
+	<property name="webapp.name" value="ROOT" />
+	<property name="dist.dir" value="${basedir}/dist" />
+	<property name="ant.dir" value="/root/.jenkins/plugins/ant/WEB-INF/lib" />
+	<property name="webRoot.dir" value="${basedir}/ROOT" />
+	<!-- <property name="src.dir" value="${basedir}/src" /> -->
+	<property name="config.dir" value="${basedir}/config" />
+	<property name="lib.dir" value="${webRoot.dir}/WEB-INF/lib" />
+	<property name="build.dir" value="${basedir}/build" />
+	
+	<!-- 使用eclipse jdt进行编译，而不使用JDK编译 
+	<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter" /> 
+	 -->
+ 
+	<!-- 初始化classpath -->
+	<path id="project.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+		<!-- 添加tomcat类路径 -->
+		<fileset dir="${TOMCAT_HOME}/lib">
+			<include name="*.jar" />
+		</fileset>
+		<!-- ant lib包  -->
+		<fileset dir="${ant.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+ 
+	<!-- get the source compile classpath in a printable form -->
+	<pathconvert pathsep="${line.separator}|   |-- " property="echo.path.compile" refid="project.classpath">
+	</pathconvert>
+	
+	<!-- show classpath jars -->
+	<target name="print_classpath">
+		<echo message="|-- compile classpath and basedir"/>
+		<echo message="|   |"/>
+		<echo message="|   |-- ${echo.path.compile}"/>
+		<echo message="|   |-- ${basedir}"/>
+	</target>
+	
+	<tstamp prefix="my">
+        <format property="day" pattern="yyyy-MM-dd"/>
+        <format property="time" pattern="HH:mm:ss"/>
+        <format property="dt" pattern="yyyy-MM-dd_HH-mm-ss"/>
+    </tstamp>
+	
+	
+	<target name="checks">
+   		<available file="${TOMCAT_HOME}/webapps/${webapp.name}.war"  property="found.war"/>
+	</target>
+	
+	<!-- 备份上次war包 -->
+	<target name="backup" depends="checks" description="备份旧文件" if="found.war">
+		<echo message="begin backup..." />
+		<move file="${TOMCAT_HOME}/webapps/${webapp.name}.war" 
+			tofile="${TOMCAT_HOME}/webapps/${webapp.name}.war.${my.dt}"></move>
+	</target>
+	
+	<!-- 删除之前的目录结构 -->
+	<target name="clear" depends="backup" description="清理旧文件">
+		<echo message="begin clear..." />
+		<delete dir="${build.dir}" />
+		<delete dir="${dist.dir}" />
+		<!-- <delete file="${TOMCAT_HOME}/webapps/${webapp.name}.war" /> -->
+		<delete dir="${TOMCAT_HOME}/webapps/${webapp.name}" />
+		<delete dir="${TOMCAT_HOME}/work/Catalina/localhost/" />
+	</target>
+ 
+	<!-- 创建目录结构 -->
+	<target name="init" depends="clear" description="创建初始化目录结构">
+		<echo message="begin init..." />
+		<mkdir dir="${build.dir}/classes" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+ 
+	<!-- 编译java -->
+	<target name="compile" depends="init" description="编译java文件">
+		<echo message="begin compile..." />
+		<javac destdir="${build.dir}/classes" includeantruntime="false" nowarn="on" 
+			source="1.7" target="1.7" deprecation="true" debug="true" 
+			encoding="UTF-8" classpathref="project.classpath" >
+            <src path="config" />  
+			<src path="core" />  
+            <src path="crm" />  
+            <src path="em" />  
+            <src path="fa" />  
+            <src path="hr" />  
+            <src path="oa" />  
+            <src path="scm" />  
+            <src path="src" />  
+            <src path="sso" />  
+            <src path="test" />  
+            <src path="thirdParty" />  
+            <src path="wf" />  
+			<compilerarg line="-Xlint:unchecked" />
+			<!-- <classpath refid="project.classpath" /> -->
+		</javac>
+		<copy todir="${build.dir}/classes">
+			<fileset dir="${config.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+				<include name="**/i18n/*.properties" />
+			</fileset>
+		</copy>
+		<echo message="end compile..." />
+	</target>
+ 
+	<!-- 将class文件打成 jar包 -->
+	<!--  
+	    <target name="pack" depends="compile"> 
+	        <jar jarfile="${build.dir}/${webapp.name}.jar"> 
+	            <fileset dir="${build.dir}/classes"> 
+	                <include name="**/*.class"/> 
+	            </fileset> 
+	        </jar> 
+	    </target> 
+	-->
+ 
+	<!-- 打成war包, 名称默认为 项目名 -->
+	<target name="war" depends="compile" description="将工程打成war包">
+		<echo message="begin war...${webRoot.dir}..." />
+		<war destfile="${dist.dir}/${webapp.name}.war" basedir="${webRoot.dir}" webxml="${webRoot.dir}/WEB-INF/web.xml">
+			<lib dir="${lib.dir}" />
+			<classes dir="${build.dir}/classes" />
+			<fileset dir="${webRoot.dir}">
+				<include name="***.*" />
+			</fileset>
+		</war>
+		<echo message="end war..." />
+	</target>
+ 
+	<!-- copy war包 tomcat的deploy目录 -->
+	<target name="deploy" depends="war" description="部署项目">
+		<echo message="begin deploy..." />
+		<copy file="${dist.dir}/${webapp.name}.war" todir="${TOMCAT_HOME}/webapps" />
+		<echo message="end deploy..." />
+	</target>
+	
 </project>
